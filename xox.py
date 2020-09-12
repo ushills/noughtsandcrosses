@@ -7,8 +7,12 @@ class XOXGame:
     def game(self):
         pass
 
-    def player_turn(self, player):
-        pass
+    def player_turn(self, player, square):
+        # need to check square is available first
+        if square in self.board:
+            self.player_squares[player].append(square)
+            self.board.remove(square)
+        return self.player_squares
 
     def available_squares(self):
         pass

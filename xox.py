@@ -1,6 +1,9 @@
 class XOXGame:
     def __init__(self):
         # initialise the board and available squares
+        # 1 | 2 | 3
+        # 4 | 5 | 6
+        # 7 | 8 | 9
         self.board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.player_squares = {"X": [], "Y": []}
 
@@ -18,4 +21,10 @@ class XOXGame:
         pass
 
     def check_winner(self):
-        pass
+        winning_squares = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [7, 5, 3]]
+        # Check player X
+        for w in winning_squares:
+            if set(w) <= set(self.player_squares["X"]):
+                return "X wins"
+            if set(w) <= set(self.player_squares["Y"]):
+                return "Y wins"

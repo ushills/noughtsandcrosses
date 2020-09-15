@@ -39,7 +39,12 @@ def test_XOXGame_check_winner():
     game.player_squares = {"X": [4, 7, 8], "Y": [9, 1, 5]}
     assert game.check_winner() == "Y wins"
 
+
 def test_XOXGame_check_draw():
     game = xox.XOXGame()
     game.board = []
     assert game.check_winner() == "Draw"
+
+
+def test_XOXGame_game():
+    pass

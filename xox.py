@@ -32,4 +32,3 @@ class XOXGame:
                 return "Y wins"
             elif len(self.board) == 0:
                 return "Draw"
-

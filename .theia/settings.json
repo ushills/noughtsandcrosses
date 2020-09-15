@@ -1,9 +1,10 @@
 {
-    "python.pythonPath": "/usr/bin/python3",
+    "python.pythonPath": "/bin/python3",
     "python.testing.pytestArgs": [
         "tests"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "python.formatting.provider": "black"
 }

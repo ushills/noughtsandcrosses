@@ -15,7 +15,9 @@ class XOXGame:
         if square in self.board:
             self.player_squares[player].append(square)
             self.board.remove(square)
-        return self.player_squares
+            return self.player_squares
+        else:
+            return "Invalid Move"
 
     def available_squares(self):
         pass
@@ -28,3 +30,6 @@ class XOXGame:
                 return "X wins"
             if set(w) <= set(self.player_squares["Y"]):
                 return "Y wins"
+            elif len(self.board) == 0:
+                return "Draw"
+

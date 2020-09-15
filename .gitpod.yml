@@ -1,5 +1,0 @@
-image: gitpod/workspace-full
-
-tasks:
-  - init: pip3 install -r requirements_dev.txt
-    command: 'echo "TODO: Replace with command to start project"'

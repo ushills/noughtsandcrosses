@@ -8,9 +8,13 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY') or \
 
 @app.route('/')
 def game():
-    game = xox.XOXGame()
-    session['board'] = game.board
+
     # session['try_number'] = 1
     # return redirect(url_for('play'))
-    return str(session['board'])
+    return "Draw board here"
 
+@app.route('/new-game')
+def new_game():
+    game = xox.XOXGame()
+    session['board'] = game.board
+    return "Init game"

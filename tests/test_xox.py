@@ -1,4 +1,4 @@
-import xox.services.xox as xox
+import xox as xox
 
 
 def test_XOXGame_init():

@@ -9,6 +9,7 @@ class Application(tk.Frame):
         self.master = master
         self.pack()
         self.create_buttons()
+        self.game = xox.XOXGame()
 
     def create_buttons(self):
         self.columnconfigure(0, pad=3)
@@ -40,6 +41,8 @@ class Application(tk.Frame):
 
     def move(self, square_number):
         print("You pressed", square_number)
+        print(self.game.first_player())
+        print(self.game.board)
 
 
 root = tk.Tk()

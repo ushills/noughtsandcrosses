@@ -1,3 +1,5 @@
+import random
+
 class XOXGame:
     def __init__(self):
         # initialise the board and available squares
@@ -32,3 +34,7 @@ class XOXGame:
                 return "Y wins"
             elif len(self.board) == 0:
                 return "Draw"
+            
+    def first_player(self):
+        return random.choice(["X", "Y"])
+        

@@ -48,3 +48,8 @@ def test_XOXGame_check_draw():
 
 def test_XOXGame_game():
     pass
+
+
+def test_first_player():
+    game = xox.XOXGame()
+    assert game.first_player() in ["X", "Y"]

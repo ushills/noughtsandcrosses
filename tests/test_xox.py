@@ -46,10 +46,6 @@ def test_XOXGame_check_draw():
     assert game.check_winner() == "Draw"
 
 
-def test_XOXGame_game():
-    pass
-
-
 def test_first_player():
     game = xox.XOXGame()
     assert game.first_player() in ["X", "Y"]

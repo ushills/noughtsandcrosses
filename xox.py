@@ -1,5 +1,6 @@
 import random
 
+
 class XOXGame:
     def __init__(self):
         # initialise the board and available squares
@@ -21,9 +22,6 @@ class XOXGame:
         else:
             return "Invalid Move"
 
-    def available_squares(self):
-        pass
-
     def check_winner(self):
         winning_squares = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [7, 5, 3]]
         # Check player X
@@ -34,7 +32,6 @@ class XOXGame:
                 return "Y wins"
             elif len(self.board) == 0:
                 return "Draw"
-            
+
     def first_player(self):
         return random.choice(["X", "Y"])
-        

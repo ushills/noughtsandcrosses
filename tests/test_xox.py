@@ -46,6 +46,14 @@ def test_XOXGame_check_draw():
     assert game.check_winner() == "Draw"
 
 
-def test_first_player():
+def test_next_player_no_current_player():
     game = xox.XOXGame()
-    assert game.first_player() in ["X", "Y"]
+    assert game.next_player() in ["X", "Y"]
+    
+def test_next_player():
+    game = xox.XOXGame()
+    game.current_player = "X"
+    assert game.next_player() == "Y"
+    assert game.next_player() == "X"
+    
+

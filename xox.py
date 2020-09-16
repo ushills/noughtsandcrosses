@@ -9,6 +9,7 @@ class XOXGame:
         # 7 | 8 | 9
         self.board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.player_squares = {"X": [], "Y": []}
+        self.current_player = None
 
     def game(self):
         pass
@@ -33,5 +34,11 @@ class XOXGame:
             elif len(self.board) == 0:
                 return "Draw"
 
-    def first_player(self):
-        return random.choice(["X", "Y"])
+    def next_player(self):
+        if self.current_player is None:
+            self.current_player = random.choice(["X", "Y"])
+        elif self.current_player == "X":
+            self.current_player = "Y"
+        else:
+            self.current_player = "X"
+        return self.current_player

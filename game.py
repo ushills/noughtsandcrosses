@@ -10,7 +10,7 @@ class Application(tk.Frame):
         self.pack()
         self.create_buttons()
         self.game = xox.XOXGame()
-        self.player = self.game.first_player()
+        self.current_player = self.game.next_player()
 
     def create_buttons(self):
         self.columnconfigure(0, pad=3)
@@ -53,7 +53,11 @@ class Application(tk.Frame):
 
     def move(self, square_number):
         print("You pressed", square_number)
-        self.game.player_turn(self.player, square_number)
+        self.game.player_turn(self.current_player, square_number)
+        self.current_player = self.game.next_player()
+        print(self.current_player)
+        result = self.game.check_winner()
+        print(result)
         print(self.game.board)
 
 

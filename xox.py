@@ -8,7 +8,7 @@ class XOXGame:
         # 4 | 5 | 6
         # 7 | 8 | 9
         self.board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        self.player_squares = {"X": [], "Y": []}
+        self.player_squares = {"X": [], "O": []}
         self.current_player = None
 
     def game(self):
@@ -29,16 +29,16 @@ class XOXGame:
         for w in winning_squares:
             if set(w) <= set(self.player_squares["X"]):
                 return "X wins"
-            if set(w) <= set(self.player_squares["Y"]):
-                return "Y wins"
+            if set(w) <= set(self.player_squares["O"]):
+                return "O wins"
             elif len(self.board) == 0:
                 return "Draw"
 
     def next_player(self):
         if self.current_player is None:
-            self.current_player = random.choice(["X", "Y"])
+            self.current_player = random.choice(["X", "O"])
         elif self.current_player == "X":
-            self.current_player = "Y"
+            self.current_player = "O"
         else:
             self.current_player = "X"
         return self.current_player

@@ -20,42 +20,62 @@ class Application(tk.Frame):
         self.rowconfigure(1, pad=3)
         self.rowconfigure(2, pad=3)
 
-        one = tk.Button(self, text="1", width=3, height=2, command=lambda: self.move(1))
-        one.grid(row=0, column=0)
-        two = tk.Button(self, text="2", width=3, height=2, command=lambda: self.move(2))
-        two.grid(row=0, column=1)
-        three = tk.Button(
-            self, text="3", width=3, height=2, command=lambda: self.move(3)
+        button_one = tk.Button(
+            self, width=3, height=2, command=lambda: self.move(1, button_one)
         )
-        three.grid(row=0, column=2)
-        four = tk.Button(
-            self, text="4", width=3, height=2, command=lambda: self.move(4)
+        button_one.grid(row=0, column=0)
+        button_two = tk.Button(
+            self, width=3, height=2, command=lambda: self.move(2, button_two)
         )
-        four.grid(row=1, column=0)
-        five = tk.Button(
-            self, text="5", width=3, height=2, command=lambda: self.move(5)
+        button_two.grid(row=0, column=1)
+        button_three = tk.Button(
+            self,
+            width=3,
+            height=2,
+            command=lambda: self.move(3, button_three),
         )
-        five.grid(row=1, column=1)
-        six = tk.Button(self, text="6", width=3, height=2, command=lambda: self.move(6))
-        six.grid(row=1, column=2)
-        seven = tk.Button(
-            self, text="7", width=3, height=2, command=lambda: self.move(7)
+        button_three.grid(row=0, column=2)
+        button_four = tk.Button(
+            self, width=3, height=2, command=lambda: self.move(4, button_four)
         )
-        seven.grid(row=2, column=0)
-        eight = tk.Button(
-            self, text="8", width=3, height=2, command=lambda: self.move(8)
+        button_four.grid(row=1, column=0)
+        button_five = tk.Button(
+            self, width=3, height=2, command=lambda: self.move(5, button_five)
         )
-        eight.grid(row=2, column=1)
-        nine = tk.Button(
-            self, text="9", width=3, height=2, command=lambda: self.move(9)
+        button_five.grid(row=1, column=1)
+        button_six = tk.Button(
+            self, width=3, height=2, command=lambda: self.move(6, button_six)
         )
-        nine.grid(row=2, column=2)
+        button_six.grid(row=1, column=2)
+        button_seven = tk.Button(
+            self,
+            width=3,
+            height=2,
+            command=lambda: self.move(7, button_seven),
+        )
+        button_seven.grid(row=2, column=0)
+        button_eight = tk.Button(
+            self,
+            width=3,
+            height=2,
+            command=lambda: self.move(8, button_eight),
+        )
+        button_eight.grid(row=2, column=1)
+        button_nine = tk.Button(
+            self, width=3, height=2, command=lambda: self.move(9, button_nine)
+        )
+        button_nine.grid(row=2, column=2)
 
-    def move(self, square_number):
-        print("You pressed", square_number)
-        self.game.player_turn(self.current_player, square_number)
-        self.current_player = self.game.next_player()
-        print(self.current_player)
+    def move(self, square_number, button_number):
+        print(
+            f"You pressed {square_number}, current player is {self.game.current_player}"
+        )
+        if (
+            self.game.player_turn(self.game.current_player, square_number)
+            != "Invalid Move"
+        ):
+            button_number["text"] = self.game.current_player
+            self.game.next_player()
         result = self.game.check_winner()
         print(result)
         print(self.game.board)

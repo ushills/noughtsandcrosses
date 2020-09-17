@@ -24,7 +24,16 @@ class XOXGame:
             return "Invalid Move"
 
     def check_winner(self):
-        winning_squares = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [7, 5, 3]]
+        winning_squares = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+            [1, 4, 7],
+            [2, 5, 8],
+            [3, 6, 9],
+            [1, 5, 9],
+            [7, 5, 3],
+        ]
         # Check player X
         for w in winning_squares:
             if set(w) <= set(self.player_squares["X"]):
@@ -33,6 +42,7 @@ class XOXGame:
                 return "O wins"
             elif len(self.board) == 0:
                 return "Draw"
+        return False
 
     def next_player(self):
         if self.current_player is None:

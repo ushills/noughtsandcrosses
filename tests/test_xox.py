@@ -22,7 +22,7 @@ def test_XOXGame_player_turn_invalid_move():
     assert game.player_squares == {"X": [1], "O": []}
 
 
-def test_XOXGame_check_winner():
+def test_XOXGame_check_winner_rows():
     game = xox.XOXGame()
     game.player_squares = {"X": [1, 2, 3], "O": []}
     assert game.check_winner() == "X wins"
@@ -30,14 +30,24 @@ def test_XOXGame_check_winner():
     assert game.check_winner() == "O wins"
     game.player_squares = {"X": [7, 8, 9], "O": []}
     assert game.check_winner() == "X wins"
+
+
+def test_XOXGame_check_winner_columns():
+    game = xox.XOXGame()
+    game.player_squares = {"X": [1, 4, 7], "O": []}
+    assert game.check_winner() == "X wins"
+    game.player_squares = {"X": [], "O": [2, 5, 8]}
+    assert game.check_winner() == "O wins"
+    game.player_squares = {"X": [3, 6, 9], "O": []}
+    assert game.check_winner() == "X wins"
+
+
+def test_XOXGame_check_winner_diagonals():
+    game = xox.XOXGame()
     game.player_squares = {"X": [], "O": [1, 5, 9]}
     assert game.check_winner() == "O wins"
     game.player_squares = {"X": [3, 5, 7], "O": []}
     assert game.check_winner() == "X wins"
-    game.player_squares = {"X": [3, 5, 7], "O": [2, 9, 1]}
-    assert game.check_winner() == "X wins"
-    game.player_squares = {"X": [4, 7, 8], "O": [9, 1, 5]}
-    assert game.check_winner() == "O wins"
 
 
 def test_XOXGame_check_draw():

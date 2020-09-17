@@ -77,7 +77,9 @@ class Application(tk.Frame):
             button_number["text"] = self.game.current_player
             self.game.next_player()
         result = self.game.check_winner()
-        print(result)
+        if result is not False:
+            print(result)
+            print("Game Finished")
         print(self.game.board)
 
 

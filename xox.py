@@ -21,7 +21,7 @@ class XOXGame:
             self.board.remove(square)
             return self.player_squares
         else:
-            return "Invalid Move"
+            return False
 
     def check_winner(self):
         winning_squares = [

@@ -18,7 +18,7 @@ def test_XOXGame_player_turn():
 def test_XOXGame_player_turn_invalid_move():
     game = xox.XOXGame()
     assert game.player_turn("X", 1) == {"X": [1], "O": []}
-    assert game.player_turn("O", 1) == "Invalid Move"
+    assert game.player_turn("O", 1) is False
     assert game.player_squares == {"X": [1], "O": []}
 
 

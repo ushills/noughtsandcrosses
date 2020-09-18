@@ -9,7 +9,7 @@ class Application:
 
         self.root = root
         root.title("Noughts and Crosses")
-        self.mainframe = ttk.Frame(root, padding=10)
+        self.mainframe = ttk.Frame(root, padding=[25, 10])
         self.mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
@@ -116,20 +116,22 @@ class Application:
         self.button_nine.grid(row=3, column=2)
 
     def move(self, square_number, button_number):
+        # TODO: check winner on last square and draw not incorrectly called
+        # TODO: Add reset button
+        # TODO: stop buttons being pressed on win
         if (
             self.game.player_turn(self.game.current_player, square_number)
-            != "Invalid Move"
+            != False
         ):
             button_number["text"] = self.game.current_player
-            button_number["relief"] = 'sunken'
+            button_number["relief"] = "sunken"
             next_player = self.game.next_player()
             self.current_player_label_text.set("Player: " + next_player)
-            winner = self.game.check_winner()
+        winner = self.game.check_winner()
 
         if winner is not False:
             self.winner_label_text.set(winner)
-
-
+            self.board=[]
 
 window = Tk()
 app = Application(window)

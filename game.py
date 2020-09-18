@@ -16,8 +16,6 @@ class Application:
         self.create_gui()
         self.create_buttons()
 
-
-
     def create_gui(self):
         self.current_player_label_text = StringVar()
         self.current_player = self.game.next_player()
@@ -29,10 +27,13 @@ class Application:
             row=0,
         )
         self.winner_label_text = StringVar()
-        self.winner_label = Label(self.mainframe, textvariable=self.winner_label_text,
-                                  ).grid(
-                                      columnspan=3,
-                                      row=5,)
+        self.winner_label = Label(
+            self.mainframe,
+            textvariable=self.winner_label_text,
+        ).grid(
+            columnspan=3,
+            row=5,
+        )
 
     def create_buttons(self):
         self.mainframe.columnconfigure(0, pad=3)
@@ -120,16 +121,14 @@ class Application:
             != "Invalid Move"
         ):
             button_number["text"] = self.game.current_player
-            #             button_number.state(['disabled'])
+            button_number["relief"] = 'sunken'
             next_player = self.game.next_player()
             self.current_player_label_text.set("Player: " + next_player)
-        result = self.game.check_winner()
+            winner = self.game.check_winner()
 
-        if result is not False:
-            self.winner_label_text.set(result)
-            print(result)
-            print("Game Finished")
-        print(self.game.board)
+        if winner is not False:
+            self.winner_label_text.set(winner)
+
 
 
 window = Tk()

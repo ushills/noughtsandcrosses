@@ -1,3 +1,5 @@
+import sys
+import os
 from tkinter import *
 from tkinter import ttk
 import xox
@@ -115,8 +117,12 @@ class Application:
         )
         self.button_nine.grid(row=3, column=2)
 
+        self.restart_button = Button(
+            self.mainframe, text="New Game", command=lambda: self.restart_program()
+        )
+        self.restart_button.grid(row=6, columnspan=3)
+
     def move(self, square_number, button_number):
-        # TODO: check winner on last square and draw not incorrectly called
         # TODO: Add reset button
         # TODO: stop buttons being pressed on win
         if self.game.player_turn(self.game.current_player, square_number) != False:
@@ -124,12 +130,15 @@ class Application:
             button_number["relief"] = "sunken"
             next_player = self.game.next_player()
             self.current_player_label_text.set("Player: " + next_player)
-            
+
         winner = self.game.check_winner()
-        print(len(self.game.board))
         if winner is not False:
             self.winner_label_text.set(winner)
             self.board = []
+
+    def restart_program(self):
+        python = sys.executable
+        os.execl(python, python, *sys.argv)
 
 
 window = Tk()

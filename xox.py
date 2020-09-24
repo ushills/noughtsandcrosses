@@ -41,7 +41,7 @@ class XOXGame:
             elif set(w) <= set(self.player_squares["O"]):
                 return "O wins"
         if len(self.board) == 0:
-                return "Draw"
+            return "Draw"
         return False
 
     def next_player(self):

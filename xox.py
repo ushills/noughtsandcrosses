@@ -38,9 +38,9 @@ class XOXGame:
         for w in winning_squares:
             if set(w) <= set(self.player_squares["X"]):
                 return "X wins"
-            if set(w) <= set(self.player_squares["O"]):
+            elif set(w) <= set(self.player_squares["O"]):
                 return "O wins"
-            elif len(self.board) == 0:
+        if len(self.board) == 0:
                 return "Draw"
         return False
 

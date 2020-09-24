@@ -119,19 +119,18 @@ class Application:
         # TODO: check winner on last square and draw not incorrectly called
         # TODO: Add reset button
         # TODO: stop buttons being pressed on win
-        if (
-            self.game.player_turn(self.game.current_player, square_number)
-            != False
-        ):
+        if self.game.player_turn(self.game.current_player, square_number) != False:
             button_number["text"] = self.game.current_player
             button_number["relief"] = "sunken"
             next_player = self.game.next_player()
             self.current_player_label_text.set("Player: " + next_player)
+            
         winner = self.game.check_winner()
-
+        print(len(self.game.board))
         if winner is not False:
             self.winner_label_text.set(winner)
-            self.board=[]
+            self.board = []
+
 
 window = Tk()
 app = Application(window)

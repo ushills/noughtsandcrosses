@@ -66,3 +66,18 @@ def test_next_player():
     game.current_player = "X"
     assert game.next_player() == "O"
     assert game.next_player() == "X"
+
+
+def test_XOXGame_real_game():
+    game = xox.XOXGame()
+    assert game.player_turn("O", 2) == {"X": [], "O": [2]}
+    assert game.player_turn("X", 3) == {"X": [3], "O": [2]}
+    assert game.player_turn("O", 9) == {"X": [3], "O": [2, 9]}
+    assert game.player_turn("X", 7) == {"X": [3, 7], "O": [2, 9]}
+    assert game.player_turn("O", 6) == {"X": [3, 7], "O": [2, 9, 6]}
+    assert game.player_turn("X", 4) == {"X": [3, 7, 4], "O": [2, 9, 6]}
+    assert game.player_turn("O", 1) == {"X": [3, 7, 4], "O": [2, 9, 6, 1]}
+    assert game.player_turn("X", 8) == {"X": [3, 7, 4, 8], "O": [2, 9, 6, 1]}
+    assert game.player_turn("O", 5) == {"X": [3, 7, 4, 8], "O": [2, 9, 6, 1, 5]}
+    assert len(game.board) == 0
+    assert game.check_winner() == "O wins"

@@ -123,7 +123,6 @@ class Application:
         self.restart_button.grid(row=6, columnspan=3)
 
     def move(self, square_number, button_number):
-        # TODO: Add reset button
         # TODO: stop buttons being pressed on win
         if self.game.player_turn(self.game.current_player, square_number) != False:
             button_number["text"] = self.game.current_player

@@ -11,8 +11,6 @@ class XOXGame:
         self.player_squares = {"X": [], "O": []}
         self.current_player = None
 
-    def game(self):
-        pass
 
     def player_turn(self, player, square):
         # need to check square is available first

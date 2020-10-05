@@ -133,3 +133,5 @@ dmypy.json
 *.cfg
 last_modified
 .vscode/settings.json
+*.e4p
+/.eric6project
